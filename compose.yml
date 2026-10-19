@@ -1,0 +1,20 @@
+services:
+  php:
+    build: .
+    container_name: portfolio-php
+    restart: unless-stopped
+
+    volumes:
+      - ./app:/var/www/html
+      - ./app:/var/www/portfolio
+
+    networks:
+      - proxy
+      - database
+
+networks:
+  proxy:
+    external: true
+
+  database:
+    external: true
