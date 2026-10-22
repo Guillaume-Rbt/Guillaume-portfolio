@@ -1,0 +1,10 @@
+<header class='flex text-white-light flex-items-center flex-justify-center p-block-4'>
+
+<div class='flex gap-2'>
+    <a href="">A propos</a>
+    {% for label, url in links %}
+        <a href="{{ url }}">{{ label }}</a>
+    {% endfor %}
+</div>
+
+</header>

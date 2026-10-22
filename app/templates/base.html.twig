@@ -7,6 +7,8 @@
         {% block stylesheets %}
         {% endblock %}
 
+        {{ vite_asset("main.ts")}}
+
         {% block javascripts %}
         {% endblock %}
 
@@ -17,7 +19,9 @@
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
     </head>
-    <body>
+    <body class="bg-dark-blue">
+        {% include 'parts/header.html.twig' with {links: {'A propos': '#about'}} %}
+        {% include 'components/hero.html.twig' %}
         {% block body %}{% endblock %}
     </body>
 </html>
