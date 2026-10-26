@@ -5,12 +5,19 @@ export default defineConfig({
         presetWind4(),
     ],
     content: {
-        filesystem: ['../templates/**/*.twig'],
+        filesystem: ['../../templates/**/*.twig'],
         pipeline: {
             include: [/\.twig$/],
         },
     },
-
+outputToCssLayers: {
+  allLayers: true,
+},
+    layers: {
+  'reset': -1,
+  'utilities': 0,
+  'default': -2,
+},
 
     theme: {
         colors:  {

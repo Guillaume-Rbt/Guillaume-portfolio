@@ -1,0 +1,16 @@
+{
+  "_app.css": {
+    "file": "css/app.css",
+    "src": "_app.css"
+  },
+  "main.ts": {
+    "file": "js/main.js",
+    "name": "main",
+    "src": "main.ts",
+    "isEntry": true,
+    "css": [
+      "css/main.css",
+      "css/app.css"
+    ]
+  }
+}

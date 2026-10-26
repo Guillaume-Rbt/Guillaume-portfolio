@@ -22,7 +22,7 @@ services:
     App\Http\Twig\AssetLoader: 
         arguments: 
             $isDev: '%env(VITE_DEV)%'
-            $manifest: '%kernel.project_dir%/public/assets/.vite/manifest.json'
+            $manifest: '%kernel.project_dir%/public/dist/.vite/manifest.json'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

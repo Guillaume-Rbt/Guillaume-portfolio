@@ -1,0 +1,3 @@
+{% block visual_editor_widget %}
+<visual-editor id="{{ id }}" name="{{ full_name }}" value="{{ value|default('[]')|e('html_attr') }}"{% for name, v in attr %} {{ name }}="{{ v is same as(true) ? 'true' : (v is same as(false) ? 'false' : v)|e('html_attr') }}"{% endfor %}></visual-editor>
+{% endblock %}

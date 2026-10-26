@@ -49,11 +49,16 @@ HTML;
         $file = $manifestData[$entry]['file'];
         $css = $manifestData[$entry]['css'] ?? [];
         $html = <<<HTML
-<script type="module" src="/assets/{$file}" defer></script>
+<script type="module" src="/dist/{$file}" defer></script><link rel="stylesheet" media="screen" href="/dist/css/main.css"/>
+<link rel="stylesheet" media="screen" href="/dist/css/app.css"/>
+
 HTML;
         foreach ($css as $cssFile) {
+            if ($cssFile === 'css/app.css' || $cssFile === 'css/main.css') {
+                continue;
+            }
             $html .= <<<HTML
-<link rel="stylesheet" media="screen" href="/assets/{$cssFile}"/>
+<link rel="stylesheet" media="screen" href="/dist/{$cssFile}"/>
 HTML;
         }
 

@@ -14,10 +14,8 @@ function configureServer(server: ViteDevServer) {
 }
 
 export default defineConfig(
-
-
   {
-    root: './assets',
+    root: './assets/ts',
     input: {
       main: 'main.ts'
     },
@@ -25,10 +23,47 @@ export default defineConfig(
     build: {
     rolldownOptions: {
          output: {
-        manualChunks: undefined
+          cleanDir: true,
+          entryFileNames: 'js/[name].js',
+          chunkFileNames: (chunk)=> { return `js/${chunk.name}.js`; },
+          assetFileNames: (asset) => {
+          if (asset.names?.[0]?.endsWith('.css')) {
+            return 'css/[name][extname]';
+          }
+
+          return 'media/[name]-[hash][extname]';
+        }, 
+          codeSplitting: {
+      groups: [
+        {
+          test: /[/\\]ts[/\\]/,
+          name: (moduleId) =>
+{
+
+
+
+            const path = moduleId.split(/[/\\]/);
+
+            if(path[path.length - 1] === "__uno.css")
+            {
+              return 'app.css'
+            }
+
+            const finalpath = path.slice(-2).map((segment) => segment.replace(/^ts$/, 'js').replace(/\.tsx?$/, '')).join('/');
+
+
+            //@ts-ignore
+            return finalpath;
+        }
+      }
+      ]
+    }
       },
+      
     },
+    assetsDir: "",
+    emptyOutDir: true,
     manifest: true,
-    outDir: '../public/assets',
+    outDir: '../../public/dist',
   }
 });

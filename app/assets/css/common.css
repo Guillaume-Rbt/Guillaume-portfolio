@@ -1,0 +1,13 @@
+@layer base, reset, utilities, theme,  default, shortcuts ;
+
+@import "@unocss/reset/eric-meyer.css" layer(reset);
+
+
+html {
+    font-size: max(16px, 1.06vw);
+}
+
+html, body 
+{
+    min-height: 100vh;
+}
