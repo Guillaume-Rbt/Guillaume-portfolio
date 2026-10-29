@@ -22,6 +22,7 @@
     "vite": "^8.3.4"
   },
   "dependencies": {
+    "@unocss/reset": "^66.12.0",
     "visual-page-editor": "github:Guillaume-Rbt/visual-page-editor"
   }
 }

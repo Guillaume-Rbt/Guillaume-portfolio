@@ -15,14 +15,16 @@ class ProjectForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('content', VisualEditorType::class, ['mapped' => true, 'attr' => ['shown' => true]]);
+            ->add('title', TextType::class, ['label' => 'post_form.title'])
+            ->add('content', VisualEditorType::class, [
+                'label' => 'post_form.content',
+                'mapped' => true,
+                'attr' => ['shown' => true],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => Project::class,
-        ]);
+        $resolver->setDefaults([]);
     }
 }

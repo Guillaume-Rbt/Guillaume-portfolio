@@ -2,9 +2,11 @@
 import '../css/common.css';
 // @ts-ignore
 import 'virtual:uno.css'
-import { Text, VisualEditor } from 'visual-page-editor';
 // @ts-ignore
 import "visual-page-editor/style.css";
+import { Text, VisualEditor } from 'visual-page-editor';
+
+
 const editor = new VisualEditor();
 
 editor.registerBlock({
@@ -19,5 +21,3 @@ editor.registerBlock({
 });
 
 editor.defineElement("visual-editor")
-
-

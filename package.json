@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@unocss/reset": "^66.11.0",
-    "visual-page-editor": "github:Guillaume-Rbt/visual-page-editor"
-  }
-}

@@ -17,7 +17,7 @@ class HomeController extends AbstractController
     {
 
         $project = new Project();
-        $form = $this->createForm(ProjectForm::class, $project);
+        $form = $this->createForm(ProjectForm::class);
 
         return $this->render('base.html.twig', [
             'form' => $form,

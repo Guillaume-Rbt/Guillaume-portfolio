@@ -2,8 +2,11 @@ import { defineConfig, presetWind4 } from 'unocss';
 
 export default defineConfig({
     presets: [
-        presetWind4(),
+        presetWind4(
+            
+        ),
     ],
+               
     content: {
         filesystem: ['../../templates/**/*.twig'],
         pipeline: {
@@ -20,6 +23,9 @@ outputToCssLayers: {
 },
 
     theme: {
+        spacing: {
+            DEFAULT: 'calc(max(16px, 1.06vw) * .25)'
+        },
         colors:  {
             dark: '#00010e',
             "dark-blue": '#000411',
