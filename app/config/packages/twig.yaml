@@ -2,6 +2,8 @@ twig:
     file_name_pattern: '*.twig'
     form_themes: 
         - form/visual_editor.html.twig
+    globals:
+        locales: '%app.locales%'
 when@test:
     twig:
         strict_variables: true
