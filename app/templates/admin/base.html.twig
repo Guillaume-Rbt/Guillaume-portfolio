@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block scripts %}
+    {{ vite_asset('admin.ts') }}
+{% endblock %}
+
+{% block body %}
+    <main class="p-6">
+        {% for message in app.flashes('success') %}
+            <div class="mb-4">{{ message }}</div>
+        {% endfor %}
+        {% block admin_body %}{% endblock %}
+    </main>
+{% endblock %}

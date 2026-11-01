@@ -1,4 +1,4 @@
-@layer base, reset, utilities, theme,  default, shortcuts ;
+@layer    reset,base, utilities, theme,  default, shortcuts ;
 
 @import "@unocss/reset/eric-meyer.css" layer(reset);
 

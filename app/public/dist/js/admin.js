@@ -1,0 +1,1 @@
+/* empty css       */import{t as e}from"./CustomElements/Tabs.js";customElements.define(`language-tabs`,e);

@@ -1,0 +1,9 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Éditer le projet{% endblock %}
+
+{% block admin_body %}
+    <h1>Éditer le projet</h1>
+    {{ include('admin/project/_form.html.twig') }}
+    <a href="{{ path(prefix ~ 'index') }}">Retour</a>
+{% endblock %}

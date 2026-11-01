@@ -49,7 +49,8 @@ HTML;
         $file = $manifestData[$entry]['file'];
         $css = $manifestData[$entry]['css'] ?? [];
         $html = <<<HTML
-<script type="module" src="/dist/{$file}" defer></script><link rel="stylesheet" media="screen" href="/dist/css/main.css"/>
+<script type="module" src="/dist/{$file}" defer></script>
+<link rel="stylesheet" media="screen" href="/dist/css/main.css"/>
 <link rel="stylesheet" media="screen" href="/dist/css/app.css"/>
 
 HTML;

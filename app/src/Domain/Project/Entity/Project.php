@@ -17,10 +17,10 @@ class Project
     #[\Doctrine\ORM\Mapping\Id]
     #[\Doctrine\ORM\Mapping\GeneratedValue]
     #[\Doctrine\ORM\Mapping\Column]
-    private int $id;
+    private ?int $id = null;
 
     #[\Doctrine\ORM\Mapping\Column(type: Types::STRING, length: 255)]
-    private string $image;
+    private string $image = '';
 
 
     #[\Doctrine\ORM\Mapping\OneToMany(
@@ -32,7 +32,7 @@ class Project
     private Collection $translations;
 
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -61,6 +61,21 @@ class Project
     public function removeTranslation(ProjectTranslation $translation): void
     {
         $this->translations->removeElement($translation);
+    }
+
+    /** Garantit une traduction (vide par défaut) pour chaque locale. */
+    public function initTranslations(array $locales): void
+    {
+        foreach ($locales as $locale) {
+            if ($this->getTranslation($locale) === null) {
+                $this->addTranslation((new ProjectTranslation())->setLocale($locale));
+            }
+        }
+    }
+
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
     }
 
     public function getTranslation(string $locale): ?ProjectTranslation

@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.image) }}
+
+    {% set labels = [] %}
+    {% for translation in form.translations %}
+        {% set labels = labels|merge([translation.vars.label]) %}
+    {% endfor %}
+    <language-tabs tabs-list="{{ labels|join(',')|e('html_attr') }}">
+        {% for translation in form.translations %}
+            <div>{{ form_widget(translation) }}</div>
+        {% endfor %}
+    </language-tabs>
+    {% do form.translations.setRendered %}
+
+    {{ form_rest(form) }}
+{{ form_end(form) }}

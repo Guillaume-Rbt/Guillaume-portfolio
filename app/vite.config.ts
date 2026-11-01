@@ -17,7 +17,8 @@ export default defineConfig(
   {
     root: './assets/ts',
     input: {
-      main: 'main.ts'
+      main: 'main.ts',
+      admin: 'admin.ts'
     },
     plugins: [UnoCSS(), {name: 'twig-reload', configureServer}],
     build: {

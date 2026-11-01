@@ -1,4 +1,5 @@
-import { createElement } from "../utils/dom";
+import { createElement, $$ } from "../utils/dom";
+import { Events } from "../utils/events";
 
 export class Tabs extends HTMLElement {
 
@@ -6,7 +7,9 @@ export class Tabs extends HTMLElement {
     tabsContent = new Map<HTMLElement, HTMLElement>();
     currentTab: HTMLElement | null = null;
     tabList = this.getAttribute('tabs-list')?.split(',') || [];
-    contents = [...this.querySelectorAll(':scope > *')];
+    tabsElements: HTMLElement[] = [];
+    contents = [...$$(':scope > *', this)] as HTMLElement[];
+
 
     get tabsNumber() {
         return this.tabList.length || 0;
@@ -14,6 +17,12 @@ export class Tabs extends HTMLElement {
 
     static get observedAttributes() {
         return ['tabs-list'];
+    }
+
+
+    constructor() {
+        super();
+        this.onTabClick = this.onTabClick.bind(this);
     }
 
 
@@ -32,20 +41,12 @@ export class Tabs extends HTMLElement {
     }
 
 
-    getTabs() {
-
-        const tabsContainer = createElement('div', "", "tabs-wrapper");
-
-        this.tabList.forEach(tab => {
-            const tabElement = createElement('button', "", "tab");
+    addTabs() {
+        this.tabList.forEach((tab) => {
+            const tabElement = createElement('button', "", "tab", "cursor-pointer", "border-1", "border-white", "rounded-999", "py-1.8", "px-3", "transition-all", "transition-ease", "transition-300", "hover:bg-blue");
             tabElement.textContent = tab;
-            tabsContainer.appendChild(tabElement);
+            this.tabsElements.push(tabElement);
         });
-
-
-        return tabsContainer;
-
-
     }
 
 
@@ -61,25 +62,60 @@ export class Tabs extends HTMLElement {
             console.error(`Mismatch between number of tabs (${this.tabsNumber}) and content sections (${this.contents.length})`);
             return;
         }
-
-
-        this.render();
-
     }
 
 
     render() {
-        const wrapper = createElement('div', "", "tabs-wrapper");
-        const content = createElement('div', "", "tabs-content");
-        const tabsContainer = this.getTabs();
+        this.removeEvents();
+        this.innerHTML = "";
+        const wrapper = createElement('div', "", "flex","flex-col", "cursor-pointer");
+        const content = createElement('div', "", "grid", "grid-cols-1", "grid-rows-1");
+        this.addTabs();
+        const tabsContainer = createElement('div', "", "tabs-wrapper");
+        this.currentTab = this.tabsElements[0];
+        this.currentTab.classList.add("bg-blue");
+        this.tabsElements.forEach(tab => tabsContainer.appendChild(tab));
 
-        this.contents.forEach((c) => content.appendChild(c));
+        this.contents.forEach((c, i) => {
+            c.classList.add("grid-col-1", "grid-row-1");
+            content.appendChild(c);
+            this.tabsContent.set(this.tabsElements[i], c);
+            if (i !== 0) {
+                c.classList.add("opacity-0", "pointer-events-none");
+            }
+        });
 
         wrapper.appendChild(tabsContainer);
         wrapper.appendChild(content);
         this.appendChild(wrapper);
+        this.addEvents();
     }
 
+    onTabClick(e: Event) {
+        e.preventDefault();
+      this.currentTab = e.currentTarget as HTMLElement;
+      this.tabsContent.forEach((content, tab) => {
+        tab.classList.toggle("bg-blue", tab === this.currentTab);
+         content.classList.toggle("opacity-0", tab !== this.currentTab);
+         content.classList.toggle("pointer-events-none", tab !== this.currentTab);
+      });
+    }
+
+    addEvents() {
+        this.tabsElements.forEach((button) => {
+            button.addEventListener(Events.click, this.onTabClick);
+        });
+    }
+    
+    disconnectedCallback() {
+        this.removeEvents();
+    }
+
+    removeEvents() {
+        this.tabsElements.forEach((button) => {
+            button.removeEventListener(Events.click, this.onTabClick);
+        });
+    }
 }
 
 

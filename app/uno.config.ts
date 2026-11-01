@@ -8,9 +8,9 @@ export default defineConfig({
     ],
                
     content: {
-        filesystem: ['../../templates/**/*.twig'],
+        filesystem: ['../../templates/**/*.twig', '../**/*.ts'],
         pipeline: {
-            include: [/\.twig$/],
+            include: [/\.twig$/, /\.ts$/],
         },
     },
 outputToCssLayers: {
@@ -19,7 +19,7 @@ outputToCssLayers: {
     layers: {
   'reset': -1,
   'utilities': 0,
-  'default': -2,
+  'default': 1,
 },
 
     theme: {
@@ -29,7 +29,7 @@ outputToCssLayers: {
         colors:  {
             dark: '#00010e',
             "dark-blue": '#000411',
-            "dark-blues-2": "#010716",
+            "dark-blue-2": "#010716",
             "blue": "#0072d5",
             "blue-2": "#0067c2",
             white: '#f4f9ff', 

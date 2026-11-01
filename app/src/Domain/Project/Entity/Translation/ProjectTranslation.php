@@ -16,7 +16,7 @@ class ProjectTranslation
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private int $id;
+    private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'translations')]
     #[ORM\JoinColumn(nullable: false)]
@@ -28,17 +28,22 @@ class ProjectTranslation
 
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private string $title;
+    private string $title = '';
 
     #[ORM\Column(type: Types::TEXT)]
-    private string $excerpt;
+    private string $excerpt = '';
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private string $slug;
+    private string $slug = '';
 
     #[\Doctrine\ORM\Mapping\Column(type: Types::JSON)]
-    private array $content;
+    private array $content = [];
 
+
+    public function isEmpty(): bool
+    {
+        return trim($this->title) === '' && trim($this->excerpt) === '' && $this->content === [];
+    }
 
     public function getId(): ?int
     {

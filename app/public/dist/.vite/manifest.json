@@ -1,13 +1,33 @@
 {
+  "_Tabs.js": {
+    "file": "js/CustomElements/Tabs.js",
+    "name": "CustomElements/Tabs"
+  },
   "_app.css": {
     "file": "css/app.css",
     "src": "_app.css"
+  },
+  "admin.ts": {
+    "file": "js/admin.js",
+    "name": "admin",
+    "src": "admin.ts",
+    "isEntry": true,
+    "imports": [
+      "_Tabs.js"
+    ],
+    "css": [
+      "css/admin.css",
+      "css/app.css"
+    ]
   },
   "main.ts": {
     "file": "js/main.js",
     "name": "main",
     "src": "main.ts",
     "isEntry": true,
+    "imports": [
+      "admin.ts"
+    ],
     "css": [
       "css/main.css",
       "css/app.css"

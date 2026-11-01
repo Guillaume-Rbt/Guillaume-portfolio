@@ -15,12 +15,6 @@ class HomeController extends AbstractController
     #[Route("/", name: "home")]
     public function home()
     {
-
-        $project = new Project();
-        $form = $this->createForm(ProjectType::class);
-
-        return $this->render('base.html.twig', [
-            'form' => $form,
-        ]);
+        return $this->render('base.html.twig');
     }
 }
