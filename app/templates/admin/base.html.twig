@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin{% endblock %}
+{% block title %}{Admin}{% endblock %}
 
 {% block scripts %}
     {{ vite_asset('admin.ts') }}
@@ -11,6 +11,13 @@
         {% for message in app.flashes('success') %}
             <div class="mb-4">{{ message }}</div>
         {% endfor %}
+
+        <div class="w-full grid gap-4 cols-[30%_1fr]">
+
+        {% include 'admin/partials/sidebar.html.twig' %}
+        
+        <div class="content w-full">
         {% block admin_body %}{% endblock %}
+        </div>
     </main>
 {% endblock %}

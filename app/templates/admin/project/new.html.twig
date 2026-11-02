@@ -1,9 +1,9 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Nouveau projet{% endblock %}
+{% block title %}{{ 'admin.project.new' | trans }}{% endblock %}
 
 {% block admin_body %}
-    <h1>Nouveau projet</h1>
+    <h1>{{ 'admin.project.new' | trans }}</h1>
     {{ include('admin/project/_form.html.twig') }}
-    <a href="{{ path(prefix ~ 'index') }}">Retour</a>
+    <a href="{{ path(prefix ~ 'index') }}">{{ 'back' | trans }}</a>
 {% endblock %}

@@ -27,7 +27,7 @@ class ProjectType extends AbstractType
                 'allow_delete' => false,
                 'by_reference' => false,
             ])
-            ->add('save', SubmitType::class, ['label' => 'Enregistrer']);
+            ->add('save', SubmitType::class, ['label' => 'save', "attr" => ["class" => "btn btn-primary"]]);
     }
 
 

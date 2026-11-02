@@ -36,7 +36,7 @@ abstract class CrudController extends BaseController
 
     protected function crudIndex(Request $request): Response
     {
-        $query = $this->getRepository()->createQueryBuilder('e')->orderBy('e.id', 'DESC');
+        $query = $this->getRepository()->createQueryBuilder('e')->orderBy('e.id', \SortDirection::Descending);
         $pagination = $this->paginator->paginate($query, max(1, $request->query->getInt('page', 1)), $this->perPage);
 
         return $this->render("admin/{$this->templatePath}/index.html.twig", [

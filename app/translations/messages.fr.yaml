@@ -5,3 +5,14 @@ post_form:
   excerpt: "Extrait"
   locale: "Langue"
   translations: "Traductions"
+
+
+admin:
+  project:
+    new: "Nouveau projet"
+    edit: "Modifier le projet"
+
+
+save: "Enregistrer"
+cancel: "Annuler"
+back: "Retour"

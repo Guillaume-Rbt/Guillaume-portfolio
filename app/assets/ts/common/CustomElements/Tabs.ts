@@ -43,7 +43,7 @@ export class Tabs extends HTMLElement {
 
     addTabs() {
         this.tabList.forEach((tab) => {
-            const tabElement = createElement('button', "", "tab", "cursor-pointer", "border-1", "border-white", "rounded-999", "py-1.8", "px-3", "transition-all", "transition-ease", "transition-300", "hover:bg-blue");
+            const tabElement = createElement('button', "", "tab", "link", "lnk-primary");
             tabElement.textContent = tab;
             this.tabsElements.push(tabElement);
         });
@@ -68,12 +68,12 @@ export class Tabs extends HTMLElement {
     render() {
         this.removeEvents();
         this.innerHTML = "";
-        const wrapper = createElement('div', "", "flex","flex-col", "cursor-pointer");
+        const wrapper = createElement('div', "", "flex", "flex-col", "cursor-pointer");
         const content = createElement('div', "", "grid", "grid-cols-1", "grid-rows-1");
         this.addTabs();
-        const tabsContainer = createElement('div', "", "tabs-wrapper");
+        const tabsContainer = createElement('div', "", "tabs-wrapper", "flex", "gap-1.5");
         this.currentTab = this.tabsElements[0];
-        this.currentTab.classList.add("bg-blue");
+        this.currentTab.classList.add("selected");
         this.tabsElements.forEach(tab => tabsContainer.appendChild(tab));
 
         this.contents.forEach((c, i) => {
@@ -93,12 +93,12 @@ export class Tabs extends HTMLElement {
 
     onTabClick(e: Event) {
         e.preventDefault();
-      this.currentTab = e.currentTarget as HTMLElement;
-      this.tabsContent.forEach((content, tab) => {
-        tab.classList.toggle("bg-blue", tab === this.currentTab);
-         content.classList.toggle("opacity-0", tab !== this.currentTab);
-         content.classList.toggle("pointer-events-none", tab !== this.currentTab);
-      });
+        this.currentTab = e.currentTarget as HTMLElement;
+        this.tabsContent.forEach((content, tab) => {
+            tab.classList.toggle("selected", tab === this.currentTab);
+            content.classList.toggle("opacity-0", tab !== this.currentTab);
+            content.classList.toggle("pointer-events-none", tab !== this.currentTab);
+        });
     }
 
     addEvents() {
@@ -106,7 +106,7 @@ export class Tabs extends HTMLElement {
             button.addEventListener(Events.click, this.onTabClick);
         });
     }
-    
+
     disconnectedCallback() {
         this.removeEvents();
     }
