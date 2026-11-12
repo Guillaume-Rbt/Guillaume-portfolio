@@ -4,20 +4,6 @@ import '../css/common.css';
 import 'virtual:uno.css'
 // @ts-ignore
 import "visual-page-editor/style.css";
-import { Text, VisualEditor } from 'visual-page-editor';
+import { initControllers } from './common/attraction/attraction';
 
-
-const editor = new VisualEditor();
-
-editor.registerBlock({
-    name: 'my-block',
-    label: 'My Block',
-    fields: [
-        Text("title", {
-            
-            label: 'My Text'
-        })
-    ]
-});
-
-editor.defineElement("visual-editor")
+void initControllers();

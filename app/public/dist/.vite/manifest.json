@@ -1,4 +1,11 @@
 {
+  "_AbstractController.js": {
+    "file": "js/attraction/AbstractController.js",
+    "name": "attraction/AbstractController",
+    "imports": [
+      "_Tabs.js"
+    ]
+  },
   "_Tabs.js": {
     "file": "js/CustomElements/Tabs.js",
     "name": "CustomElements/Tabs"
@@ -7,17 +14,41 @@
     "file": "css/app.css",
     "src": "_app.css"
   },
+  "_attraction.js": {
+    "file": "js/attraction/attraction.js",
+    "name": "attraction/attraction"
+  },
   "admin.ts": {
     "file": "js/admin.js",
     "name": "admin",
     "src": "admin.ts",
     "isEntry": true,
     "imports": [
+      "_attraction.js",
       "_Tabs.js"
     ],
     "css": [
       "css/admin.css",
       "css/app.css"
+    ]
+  },
+  "controllers/EditorController.ts": {
+    "file": "js/controllers/EditorController.js",
+    "name": "controllers/EditorController",
+    "src": "controllers/EditorController.ts",
+    "isEntry": true,
+    "imports": [
+      "_AbstractController.js"
+    ]
+  },
+  "controllers/TitleController.ts": {
+    "file": "js/controllers/TitleController.js",
+    "name": "controllers/TitleController",
+    "src": "controllers/TitleController.ts",
+    "isEntry": true,
+    "imports": [
+      "_Tabs.js",
+      "_AbstractController.js"
     ]
   },
   "main.ts": {
@@ -26,10 +57,10 @@
     "src": "main.ts",
     "isEntry": true,
     "imports": [
+      "_attraction.js",
       "admin.ts"
     ],
     "css": [
-      "css/main.css",
       "css/app.css"
     ]
   }

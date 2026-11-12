@@ -1,0 +1,1 @@
+import"../CustomElements/Tabs.js";import"../attraction/AbstractController.js";

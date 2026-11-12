@@ -1,8 +1,9 @@
 <section
-    class="hero h-screen"
+    id="{{ config is defined and config.id is defined ? config.id : '' }}"
+    class="hero full-height-header {{ config is defined and config.class is defined ? config.class : '' }}"
     style="background: linear-gradient(
     color-mix(in srgb, var(--colors-dark-blue) 95%, transparent),
     color-mix(in srgb, var(--colors-dark-blue) 95%, transparent)
-    ), url('{{ asset('images/hero/hero-background.webp') }}') center / cover no-repeat;"
->
+    ), url('{{ asset('images/hero/hero-background.webp') }}') center / cover no-repeat; {{ config is defined and config.css is defined ? config.css : '' }}"
+>{{ data.title }}
 </section>

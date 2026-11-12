@@ -1,12 +1,16 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Projets{% endblock %}
+{% block title %}{{ 'admin.project.list'|trans }}{% endblock %}
+
+{% block admin_header %}{% include 'admin/partials/admin-header.html.twig' with {
+        title: 'admin.project.list'|trans,
+        action: 'admin.project.new'|trans,
+        prefix: prefix,
+        path: 'new'
+    } %}{% endblock %}
 
 {% block admin_body %}
-    <div class="flex justify-between items-center mb-4">
-        <h1>Projets</h1>
-        <a href="{{ path(prefix ~ 'new') }}">Nouveau projet</a>
-    </div>
+   
 
     <table class="w-full">
         <thead>
@@ -25,10 +29,10 @@
                     <td>{{ project.image }}</td>
                     <td>{{ translation ? translation.title : '' }}</td>
                     <td>
-                        <a href="{{ path(prefix ~ 'edit', {id: project.id}) }}">Éditer</a>
+                        <a class="btn btn-primary" href="{{ path(prefix ~ 'edit', {id: project.id}) }}">{{ 'admin.project.edit'|trans }}</a>
                         <form method="post" action="{{ path(prefix ~ 'delete', {id: project.id}) }}" class="inline" onsubmit="return confirm('Supprimer ce projet ?')">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
-                            <button type="submit">Supprimer</button>
+                            <button class="btn btn-danger" type="submit">{{ 'admin.project.delete'|trans }}</button>
                         </form>
                     </td>
                 </tr>

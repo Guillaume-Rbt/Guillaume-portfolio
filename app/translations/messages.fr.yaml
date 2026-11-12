@@ -9,8 +9,10 @@ post_form:
 
 admin:
   project:
+    list: "Projets"
     new: "Nouveau projet"
     edit: "Modifier le projet"
+    delete: "Supprimer le projet"
 
 
 save: "Enregistrer"

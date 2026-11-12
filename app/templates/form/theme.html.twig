@@ -1,0 +1,33 @@
+{% use 'form_div_layout.html.twig' %}
+
+
+{% block form_start %}
+
+    {% set attr = attr|merge({
+        class: (attr.class|default('') ~ 'flex-grow flex flex-col')|trim
+    }) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block form_row %}
+    {% set row_attr = row_attr|merge({
+        class: (row_attr.class|default('') ~ ' flex flex-col gap-1 mt-3')|trim
+    }) %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block form_widget_simple %}
+    {% set attr = attr|merge({
+        class: (attr.class|default('') ~ ' border-dark/20 border-1 p-1')|trim
+    }) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block textarea_widget %}
+    {% set attr = attr|merge({
+        class: (attr.class|default('') ~ ' border-dark/20 border-1 p-1')|trim
+    }) %}
+    {{ parent() }}
+{% endblock %}
+

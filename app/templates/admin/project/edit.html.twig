@@ -2,8 +2,13 @@
 
 {% block title %}Éditer le projet{% endblock %}
 
+{% block admin_header %}{% include 'admin/partials/admin-header.html.twig' with {
+        title: 'Éditer le projet',
+        prefix: prefix,
+        path: 'index'
+    } %}{% endblock %}
+
+
 {% block admin_body %}
-    <h1>Éditer le projet</h1>
     {{ include('admin/project/_form.html.twig') }}
-    <a href="{{ path(prefix ~ 'index') }}">Retour</a>
 {% endblock %}

@@ -1,8 +1,47 @@
-const isMobile =
-	typeof navigator !== "undefined" &&
-	/(Android|iPhone|iPad|iPod|Mobile)/i.test(navigator.userAgent);
+const touchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+const events = {
+    CLICK_TOUCH: touchDevice ? "click" : "click",
+    DOWN_TOUCHSTART: touchDevice ? "touchstart" : "mousedown",
+    MOVE_TOUCHMOVE: touchDevice ? "touchmove" : "mousemove",
+    UP_TOUCHEND: touchDevice ? "touchend" : "mouseup",
+    MOUSEENTER_TOUCHSTART: touchDevice ? "touchstart" : "mouseenter",
+    MOUSELEAVE_TOUCHEND: touchDevice ? "touchend" : "mouseleave",
+    MOUSEOVER_TOUCHSTART: touchDevice ? "touchstart" : "mouseover",
+    MOUSEOUT_TOUCHEND: touchDevice ? "touchend" : "mouseout",
+    SELECTION_CHANGE: "selectionchange",
+    DROP: "drop",
+    DRAG: "drag",
+    DRAG_START: "dragstart",
+    DRAG_END: "dragend",
+    DRAG_OVER: "dragover",
+    DRAG_ENTER: "dragenter",
+    DRAG_LEAVE: "dragleave",
+    PASTE: "paste",
+    SCROLL: "scroll",
+    CONTEXTMENU: "contextmenu",
+    FOCUS: "focus",
+    BLUR: "blur",
+    INPUT: "input",
+    KEYDOWN: "keydown",
+    KEYUP: "keyup",
+    KEYPRESS: "keypress",
+    LOAD: "load",
+    LOADED_METADATA: "loadedmetadata",
+    CHANGE: "change",
+    WHEEL: "wheel",
+    ORIENTATION_CHANGE: "orientationchange", // !DEPRECATED - ScreenOrientation.onchange to use instead -> https://developer.mozilla.org/en-US/docs/Web/API/Window/orientationchange_event
+    RESIZE: "resize",
+    BEFORE_UNLOAD: "beforeunload",
+    UNLOAD: "unload",
+    MESSAGE: "message",
+    TRANSITION_START: "transitionstart",
+    TRANSITION_END: "transitionend",
+    TRANSITION_CANCEL: "transitioncancel",
+    ANIMATION_START: "animationstart",
+    ANIMATION_END: "animationend",
+    ANIMATION_ITERATION: "animationiteration",
+};
 
 
-    export const Events = {
-        click: isMobile ? "touchend" : "click"
-    }
+export { events };

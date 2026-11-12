@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'parts/header.html.twig' %}
+    <div id="components-root">
+        
+        {% for block in blocks %}
+            <div>{% include 'components/' ~ block._name ~ '.html.twig' with {data: block.data, config: block.config|default({}), requestParams: requestParams|default({})} %}</div>
+        {% endfor %}
+    </div>
+{% endblock %}

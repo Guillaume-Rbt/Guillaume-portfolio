@@ -7,17 +7,27 @@
 {% endblock %}
 
 {% block body %}
-    <main class="p-6">
-        {% for message in app.flashes('success') %}
-            <div class="mb-4">{{ message }}</div>
-        {% endfor %}
-
-        <div class="w-full grid gap-4 cols-[30%_1fr]">
-
-        {% include 'admin/partials/sidebar.html.twig' %}
-        
-        <div class="content w-full">
-        {% block admin_body %}{% endblock %}
+    <main class="h-[100vh] bg-white">
+        <div data-controller="FlashController" class="fixed top-4 right-4 text-dark flex flex-col gap-3 pointer-events-none z-50">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="mb-0 flash {{ type }} pointer-events-auto">{{ message }}</div>
+                {% endfor %}
+            {% endfor %}
         </div>
+  
+
+        <div class="w-full grid cols-[auto_1fr] h-full">
+
+            {% include 'admin/partials/sidebar.html.twig' %}
+        
+            <div class="bg-white text-dark content w-full h-full flex flex-col">
+
+                {% block admin_header %}{% endblock %}
+
+                <div class="p-4 h-1 flex-grow flex flex-col">
+                    {% block admin_body %}{% endblock %}
+                </div>
+            </div>
     </main>
 {% endblock %}

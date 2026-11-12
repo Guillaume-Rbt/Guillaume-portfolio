@@ -26,8 +26,12 @@ class ProjectType extends AbstractType
                 'allow_add' => false,
                 'allow_delete' => false,
                 'by_reference' => false,
+                "attr" => ["data-translation" => true]
             ])
-            ->add('save', SubmitType::class, ['label' => 'save', "attr" => ["class" => "btn btn-primary"]]);
+            ->add('save', SubmitType::class, [
+                'label' => 'save',
+                'attr' => ['class' => 'btn btn-primary mt-auto ml-auto'],
+            ]);
     }
 
 

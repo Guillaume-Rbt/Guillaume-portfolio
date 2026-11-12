@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="font-urbanist">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -7,7 +7,7 @@
         {% block scripts %}{{ vite_asset("main.ts") }}{% endblock %}
         
     </head>
-    <body class="bg-dark-blue text-white text-3.5">
+    <body class="bg-dark text-white text-3.5">
         {% block body %}{% endblock %}
     </body>
 </html>

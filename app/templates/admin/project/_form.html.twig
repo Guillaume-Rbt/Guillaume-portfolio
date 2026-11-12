@@ -2,16 +2,20 @@
     {{ form_errors(form) }}
     {{ form_row(form.image) }}
 
+    {% set sortedTranslations = form.translations|sort_by_locales %}
     {% set labels = [] %}
-    {% for translation in form.translations %}
+    {% for translation in sortedTranslations %}
         {% set labels = labels|merge([translation.vars.label]) %}
     {% endfor %}
-    <language-tabs tabs-list="{{ labels|join(',')|e('html_attr') }}">
-        {% for translation in form.translations %}
-            <div>{{ form_widget(translation) }}</div>
-        {% endfor %}
-    </language-tabs>
-    {% do form.translations.setRendered %}
 
-    {{ form_rest(form) }}
+<h1 class="text-4.5 font-600 mt-6">{{ form_label(form.translations) }}</h1>
+
+<language-tabs class="mt-3" tabs-list="{{ labels|join(',')|e('html_attr') }}">
+    {% for translation in sortedTranslations %}
+        {{ form_widget(translation, {'attr': {'data-translation': ''}}) }}
+    {% endfor %}
+</language-tabs>
+{% do form.translations.setRendered %}
+<div class="mt-auto flex align-items-center gap-3">{{ form_widget(form.save) }}    <a class="btn btn-outline-primary" href="{{ path(prefix ~ 'index') }}">Retour</a></div> 
+{{ form_rest(form) }}
 {{ form_end(form) }}

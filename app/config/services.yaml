@@ -25,5 +25,11 @@ services:
             $isDev: '%env(VITE_DEV)%'
             $manifest: '%kernel.project_dir%/public/dist/.vite/manifest.json'
 
+    App\Http\Twig\SortByLocalesFilter:
+        arguments:
+            $locales: '%app.locales%'
+        tags:
+            - { name: twig.extension }
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

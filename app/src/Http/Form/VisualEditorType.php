@@ -5,8 +5,11 @@ namespace App\Http\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VisualEditorType extends AbstractType
 {
@@ -42,5 +45,20 @@ class VisualEditorType extends AbstractType
                 )
             )
         );
+    }
+
+    public function buildView(
+        FormView $view,
+        FormInterface $form,
+        array $options
+    ): void {
+        $view->vars['tag_name'] = $options['tag_name'];
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'tag_name' => 'visual-editor',
+        ]);
     }
 }

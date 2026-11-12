@@ -1,0 +1,6 @@
+<div class="flex justify-between items-center h-15 px-4 bg-dark/5 mb-1">
+    <h1 class="text-5 font-600 text-dark">{% if title is defined %}{{ title }}{% endif %}</h1>
+    {% if action is defined and prefix and path is defined %}
+        <a class="btn btn-primary" href="{{ path(prefix ~ path) }}">{{ action }}</a>
+    {% endif %}
+</div>

@@ -1,0 +1,1 @@
+import"../CustomElements/Tabs.js";

@@ -1,5 +1,5 @@
 import { createElement, $$ } from "../utils/dom";
-import { Events } from "../utils/events";
+import { events } from "../utils/events";
 
 export class Tabs extends HTMLElement {
 
@@ -103,7 +103,7 @@ export class Tabs extends HTMLElement {
 
     addEvents() {
         this.tabsElements.forEach((button) => {
-            button.addEventListener(Events.click, this.onTabClick);
+            button.addEventListener(events.CLICK_TOUCH, this.onTabClick);
         });
     }
 
@@ -113,7 +113,7 @@ export class Tabs extends HTMLElement {
 
     removeEvents() {
         this.tabsElements.forEach((button) => {
-            button.removeEventListener(Events.click, this.onTabClick);
+            button.removeEventListener(events.CLICK_TOUCH, this.onTabClick);
         });
     }
 }
