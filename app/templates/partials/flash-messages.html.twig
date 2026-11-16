@@ -1,0 +1,7 @@
+<div data-controller="FlashController" class="fixed top-4 right-4 text-dark flex flex-col gap-3 pointer-events-none z-50">
+    {% for type, messages in flashes %}
+        {% for message in messages %}
+            <div class="mb-0 flash {{ type }} pointer-events-auto">{{ message }} <button class="icon icon-close ml-auto pl-4 text-current opacity-70 hover:opacity-100 transition-opacity cursor-pointer" data-flash-action="CLICK_TOUCH->flash#removeByClick"></button></div>
+        {% endfor %}
+    {% endfor %}
+</div>

@@ -56,6 +56,8 @@ export default defineConfig({
     },
     shortcuts: [
         ["btn", "cursor-pointer rounded-1 py-1.8 px-3 font-600 inline-flex items-center justify-center w-max"],
+        ["icon", "inline-block w-[1em] h-[1em] bg-[currentColor] mask mask-center mask-no-repeat"],
+        [/icon-(.+)/, ([, name]) => `mask-[url(/images/icons/${name}.svg)]`],
       [/^btn-outline-(.+)$/,
             ([, color], { theme }) => {
                 const themeColor = theme.colors?.[color];

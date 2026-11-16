@@ -34,7 +34,6 @@ export abstract class AbstractController<T extends HTMLElement = HTMLElement> {
         const targets = $$(`[data-${this.getName()}-target]`, this.element )
         
         targets.forEach(target => {
-            console.log(target)
             const name = target.getAttribute(`data-${this.getName()}-target`);
             if (!name) return;
            (this as unknown as Record<string, unknown>)[`${name}Target`] = target;
@@ -48,7 +47,7 @@ export abstract class AbstractController<T extends HTMLElement = HTMLElement> {
     elements.forEach(element => {
         const attr = element.getAttribute(`data-${this.getName()}-action`)?.split(/->|#/);
         const event = attr?.[0];
-        const controller = attr?.[1];
+        const controller = attr?.[1].toLowerCase();
         const method = attr?.[2];
         if (!method || !event || !controller) return;
         if(controller !== this.getName()) return;

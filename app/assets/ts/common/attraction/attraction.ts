@@ -4,7 +4,7 @@ import type { AbstractController } from './AbstractController';
 
 type ControllerConstructor = new (element: HTMLElement) => AbstractController;
 
-const CONTROLLER_NAME = /^[A-Z][a-z]+Controller$/;
+const CONTROLLER_NAME = /^(?:[A-Z][a-z]+)+Controller$/;
 
 const instances = new WeakMap<HTMLElement, Map<string, AbstractController>>();
 const pending = new WeakMap<HTMLElement, Set<string>>();

@@ -1,7 +1,7 @@
 post_form:
   title: "Titre"
   content: "Contenu"
-  image: "Image"
+  image: "Ajouter une image"
   excerpt: "Extrait"
   locale: "Langue"
   translations: "Traductions"

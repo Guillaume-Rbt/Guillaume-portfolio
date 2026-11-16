@@ -1,0 +1,69 @@
+[data-controller="FilesManagerController"] {
+    position: relative;
+    isolation: isolate;
+}
+
+[data-controller="FilesManagerController"]::before,
+[data-controller="FilesManagerController"]::after {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+[data-controller="FilesManagerController"]:has(+input:placeholder-shown)::before {
+    content: attr(data-before-content);
+    background: var(--colors-white);
+}
+
+[data-controller="FilesManagerController"]:has(+input:placeholder-shown)::after {
+    background: transparent;
+}
+
+[data-controller="FilesManagerController"]:has(+input:placeholder-shown):hover {
+
+    &::before {
+        content: "";
+        background: color-mix(in srgb, var(--colors-primary), var(--colors-white) 80%);
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        background: color-mix(in srgb, #00010e, var(--colors-white) 80%);
+        mask: url('/images/icons/open-folder.svg') no-repeat center;
+        mask-size: 60%;
+    }
+}
+
+[data-controller="FilesManagerController"] {
+    &::before {
+        content: "";
+        background-image: var(--file-url);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    &:hover:not(:has(button:hover))::before {
+        opacity: 0.8;
+        background: color-mix(in srgb, var(--colors-primary), var(--colors-white) 80%);
+    }
+
+    &:hover:not(:has(button:hover))::after {
+        content: "";
+        display: block;
+        background: color-mix(in srgb, #00010e, var(--colors-white) 80%);
+        mask: url('/images/icons/open-folder.svg') no-repeat center;
+        mask-size: 80%;
+    }
+}
+
+input:placeholder-shown {
+    background-color: red;
+}

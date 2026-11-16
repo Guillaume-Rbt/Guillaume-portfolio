@@ -2,6 +2,7 @@ import { defineConfig, type ViteDevServer } from 'vite';
 import UnoCSS from 'unocss/vite'
 import { resolve } from 'node:path';
 import { readFile, readdir } from 'node:fs/promises';
+import svgSpritePlugin from '@pivanov/vite-plugin-svg-sprite';
 
 
 const watched = ['templates', 'src', 'assets/ts'].map((d) => resolve(import.meta.dirname, d));
@@ -49,9 +50,9 @@ export default defineConfig(async () => {
          output: {
           cleanDir: true,
           entryFileNames: 'js/[name].js',
-          chunkFileNames: (chunk)=> { return `js/${chunk.name}.js`; },
-          assetFileNames: (asset) => {
-          if (asset.names?.[0]?.endsWith('.css')) {
+          chunkFileNames: (chunk: { name: string })=> { return `js/${chunk.name}.js`; },
+          assetFileNames: (asset: { name: string[] }) => {
+          if (asset.name?.[0]?.endsWith('.css')) {
             return 'css/[name][extname]';
           }
 
@@ -61,7 +62,7 @@ export default defineConfig(async () => {
       groups: [
         {
           test: /[/\\]ts[/\\]/,
-          name: (moduleId) =>
+          name: (moduleId: string) =>
 {
 
 

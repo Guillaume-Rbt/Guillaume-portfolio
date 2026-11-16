@@ -5,6 +5,7 @@ twig:
         - form/theme.html.twig
     globals:
         locales: '%app.locales%'
+        uploads: '%uploads%'
 
 when@dev:
     twig:

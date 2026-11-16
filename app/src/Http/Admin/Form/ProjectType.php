@@ -11,15 +11,23 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
 
 class ProjectType extends AbstractType
 {
+    public function __construct(private TranslatorInterface $translator) {}
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('image', TextType::class, ['label' => 'post_form.image', 'empty_data' => '', 'required' => false])
+            ->add('image', TextType::class, [
+                'label' => ' ',
+                'empty_data' => '',
+                'required' => false,
+                'label_attr' => ['class' => 'border-dark/20 border-1 h-30 w-30 bg-contain bg-center flex items-center justify-center bg-no-repeat cursor-pointer', "data-controller" => "FilesManagerController", "data-filesmanager-action" => "CLICK_TOUCH->FilesManager#openFileManager", "data-before-content" => $this->translator->trans('post_form.image')],
+                "attr" => ["class" => "hidden"]
+            ])
             ->add('translations', CollectionType::class, [
                 'label' => 'post_form.translations',
                 'entry_type' => ProjectTranslationType::class,

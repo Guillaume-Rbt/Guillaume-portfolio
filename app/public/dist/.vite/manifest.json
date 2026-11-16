@@ -10,9 +10,9 @@
     "file": "js/CustomElements/Tabs.js",
     "name": "CustomElements/Tabs"
   },
-  "_app.css": {
-    "file": "css/app.css",
-    "src": "_app.css"
+  "_app-BHnVItqB.css": {
+    "file": "media/app-BHnVItqB.css",
+    "src": "_app-BHnVItqB.css"
   },
   "_attraction.js": {
     "file": "js/attraction/attraction.js",
@@ -28,8 +28,8 @@
       "_Tabs.js"
     ],
     "css": [
-      "css/admin.css",
-      "css/app.css"
+      "media/admin-DExBpHne.css",
+      "media/app-BHnVItqB.css"
     ]
   },
   "controllers/EditorController.ts": {
@@ -38,6 +38,16 @@
     "src": "controllers/EditorController.ts",
     "isEntry": true,
     "imports": [
+      "_AbstractController.js"
+    ]
+  },
+  "controllers/FlashController.ts": {
+    "file": "js/controllers/FlashController.js",
+    "name": "controllers/FlashController",
+    "src": "controllers/FlashController.ts",
+    "isEntry": true,
+    "imports": [
+      "_Tabs.js",
       "_AbstractController.js"
     ]
   },
@@ -61,7 +71,7 @@
       "admin.ts"
     ],
     "css": [
-      "css/app.css"
+      "media/app-BHnVItqB.css"
     ]
   }
 }

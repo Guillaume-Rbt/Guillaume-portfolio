@@ -8,6 +8,8 @@
         
     </head>
     <body class="bg-dark text-white text-3.5">
+        {% include 'partials/flash-messages.html.twig' with {flashes: app.flashes} %}
+        {% block header %}{% include 'partials/header.html.twig' %}{% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>
